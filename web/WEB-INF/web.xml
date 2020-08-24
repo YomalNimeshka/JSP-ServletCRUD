@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    
+    <servlet>
+        <servlet-name>registerUserServlet</servlet-name>
+        <servlet-class>com.Controllers.registerUserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>com.Controllers.loginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>dashboardServlet</servlet-name>
+        <servlet-class>com.Controllers.dashboardServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>addNewAccountServlet</servlet-name>
+        <servlet-class>com.Controllers.addNewAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editAccountServlet</servlet-name>
+        <servlet-class>com.Controllers.editAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updatedAccountServlet</servlet-name>
+        <servlet-class>com.Controllers.updatedAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteAccountServlet</servlet-name>
+        <servlet-class>com.Controllers.deleteAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletedAccountServlet</servlet-name>
+        <servlet-class>com.Controllers.deletedAccountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logoutServlet</servlet-name>
+        <servlet-class>com.Controllers.logoutServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>registerUserServlet</servlet-name>
+        <url-pattern>/registerUserServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dashboardServlet</servlet-name>
+        <url-pattern>/dashboardServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addNewAccountServlet</servlet-name>
+        <url-pattern>/addNewAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editAccountServlet</servlet-name>
+        <url-pattern>/editAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updatedAccountServlet</servlet-name>
+        <url-pattern>/updatedAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteAccountServlet</servlet-name>
+        <url-pattern>/deleteAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletedAccountServlet</servlet-name>
+        <url-pattern>/deletedAccountServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logoutServlet</servlet-name>
+        <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+
+
+
+    <welcome-file-list>
+        <welcome-file>view/login.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
