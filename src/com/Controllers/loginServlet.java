@@ -38,7 +38,7 @@ public class loginServlet extends HttpServlet {
             }else if (isConnected==0){
                 //user cannot login
                 RequestDispatcher rd = request.getRequestDispatcher("view/loginWrong.jsp");
-                rd.forward(request,response);
+                rd.include(request,response);
             }
         } catch (SQLException e) {
             e.printStackTrace();

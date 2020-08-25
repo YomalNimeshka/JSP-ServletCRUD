@@ -57,7 +57,7 @@ public class registerUserServlet extends HttpServlet {
         }else{
             //user cannot register
             RequestDispatcher rd = request.getRequestDispatcher("view/registerError.jsp");
-            rd.forward(request,response);
+            rd.include(request,response);
         }
 
 
