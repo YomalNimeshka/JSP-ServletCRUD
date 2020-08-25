@@ -87,7 +87,7 @@ public class accountDao {
                 String gender = resultSet.getString("gender");
                 listOfAcc.add(new accountModel(username,mobileNumber,gender));
             }
-
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -111,6 +111,7 @@ public class accountDao {
                 String password = resultSet.getString("password");
                 model = new accountModel(username,mobileNumber,gender, password);
             }
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -128,6 +129,7 @@ public class accountDao {
             preparedStatement.setString(3, model.getUserName());
             preparedStatement.executeUpdate();
             System.out.println("Data has been updated ");
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("data could not be updated");
@@ -144,6 +146,7 @@ public class accountDao {
             preparedStatement.setString(2, model.getUserName());
             preparedStatement.executeUpdate();
             System.out.println("Data has been updated ");
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("data could not be updated");
@@ -160,6 +163,7 @@ public class accountDao {
             preparedStatement.setString(2, model.getUserName());
             preparedStatement.executeUpdate();
             System.out.println("Data has been updated ");
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("data could not be updated");
@@ -174,6 +178,7 @@ public class accountDao {
             preparedStatement.setString(1, model.getUserName());
             preparedStatement.executeUpdate();
             System.out.println("account deleted");
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("could not be deleted");
