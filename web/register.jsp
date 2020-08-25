@@ -124,6 +124,8 @@
             }
             
         }
+
+
     </script>
 </head>
 <body>
@@ -164,8 +166,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select class="form-control" name="user-gender" required>
-                                        <option class="hidden"  selected disabled>Please select your Gender</option>
+                                    <select class="form-control" name="user-gender" id="genderSelection" required >
+                                        <option class="hidden"  value="" selected disabled>Please select your Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
