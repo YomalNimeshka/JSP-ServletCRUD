@@ -146,6 +146,14 @@
 
 </head>
 <body>
+<%
+    String accountName=(String)session.getAttribute("accountName");
+
+    //redirect user to login page if not logged in
+    if(accountName==null){
+        response.sendRedirect("http://localhost:8080/");
+    }
+%>
 
 <!---->
 <main>
@@ -156,7 +164,7 @@
         <div class="card">
 
 
-    <form action="logoutServlet" method="post">
+    <form action="logoutServlet" method="get">
         <input type="submit" class="btn btn-danger" name="add-user"  id="logout_acc" value="Log Out"/>
     </form>
 

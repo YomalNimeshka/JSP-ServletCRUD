@@ -129,7 +129,7 @@
                 <h3>Welcome</h3>
                 <p>Need a Account?</p>
                 <%--<input type="submit" name="" value="Login" /><br/>--%>
-                <a href="view/register.jsp" name="" class="a"  >Register</a>
+                <a href="register.jsp" name="" class="a"  >Register</a>
             </div>
             <div class="col-md-9 register-right">
 

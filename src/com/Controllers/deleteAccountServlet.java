@@ -27,7 +27,7 @@ public class deleteAccountServlet extends HttpServlet {
 
         accountModel account = dao.editAccountDetails(model);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/delete.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");
         request.setAttribute("account", account);
         requestDispatcher.forward(request,response);
         dao.deleteAccount(model);

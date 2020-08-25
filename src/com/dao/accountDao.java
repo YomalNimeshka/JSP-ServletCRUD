@@ -134,6 +134,38 @@ public class accountDao {
         }
     }
 
+    public void updateAccountWithMN(accountModel model){
+        String sql ="update onlineaccount set mobile_number = ? where user_name = ?";
+
+        try {
+            connection = dbConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, model.getMobileNumber());
+            preparedStatement.setString(2, model.getUserName());
+            preparedStatement.executeUpdate();
+            System.out.println("Data has been updated ");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("data could not be updated");
+        }
+    }
+
+    public void updateAccountWithGender(accountModel model){
+        String sql = "update onlineaccount set  gender = ? where user_name = ?";
+
+        try {
+            connection = dbConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, model.getGender());
+            preparedStatement.setString(2, model.getUserName());
+            preparedStatement.executeUpdate();
+            System.out.println("Data has been updated ");
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("data could not be updated");
+        }
+    }
+
     public void deleteAccount(accountModel model){
         String sql = "delete from onlineaccount where user_name =?";
         try {

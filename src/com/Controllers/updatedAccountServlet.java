@@ -26,6 +26,8 @@ public class updatedAccountServlet extends HttpServlet {
 
         accountDao dao = new accountDao();
         dao.updateAccount(model);
+        dao.updateAccountWithMN(model);
+        dao.updateAccountWithGender(model);
 
         response.sendRedirect(request.getContextPath()+ "/dashboardServlet");
     }

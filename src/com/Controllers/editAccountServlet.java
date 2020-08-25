@@ -29,7 +29,7 @@ public class editAccountServlet extends HttpServlet {
         accountDao dao = new accountDao();
         accountModel accountDetails = dao.editAccountDetails(model);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/edit.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("edit.jsp");
         request.setAttribute("account", accountDetails);
         requestDispatcher.forward(request,response);
     }

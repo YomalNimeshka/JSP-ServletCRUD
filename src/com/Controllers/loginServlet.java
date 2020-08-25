@@ -30,14 +30,15 @@ public class loginServlet extends HttpServlet {
 
             if (isConnected==1){
                 //user is been logged in
-                request.setAttribute("username", userName);
+                HttpSession session = request.getSession(true);
+                session.setAttribute("accountName", userName);
                 response.sendRedirect(request.getContextPath()+ "/dashboardServlet");
-                /*RequestDispatcher rd = request.getRequestDispatcher("view/dashboard.jsp");
+                /*RequestDispatcher rd = request.getRequestDispatcher("/dashboard.jsp");
                 rd.forward(request,response);*/
 
             }else if (isConnected==0){
                 //user cannot login
-                RequestDispatcher rd = request.getRequestDispatcher("view/loginWrong.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("loginWrong.jsp");
                 rd.include(request,response);
             }
         } catch (SQLException e) {

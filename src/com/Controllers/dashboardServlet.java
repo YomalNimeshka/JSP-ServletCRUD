@@ -28,7 +28,7 @@ public class dashboardServlet extends HttpServlet {
             request.setAttribute("listOfAcc", listOfAcc);
 
 
-            RequestDispatcher rd = request.getRequestDispatcher("view/dashboard.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
             rd.forward(request,response);
 
         } catch (SQLException e) {

@@ -52,11 +52,11 @@ public class registerUserServlet extends HttpServlet {
                 e.printStackTrace();
             }
 
-            RequestDispatcher rd = request.getRequestDispatcher("view/login.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request,response);
         }else{
             //user cannot register
-            RequestDispatcher rd = request.getRequestDispatcher("view/registerError.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("registerError.jsp");
             rd.include(request,response);
         }
 
