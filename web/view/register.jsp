@@ -111,7 +111,20 @@
         .a{
             color: white;
         }
+
+
     </style>
+    <script>
+        function visibilty() {
+            var visibiltyToggle = document.getElementById("password");
+            if (visibiltyToggle.type === "password"){
+                visibiltyToggle.type="text";
+            }else{
+                visibiltyToggle.type="password";
+            }
+            
+        }
+    </script>
 </head>
 <body>
 <%--<h1>Register as User</h1>
@@ -147,11 +160,11 @@
                                     <input type="text" class="form-control" name="user-name" placeholder=" Name *" value="" required/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text"  maxlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value=""  required/>
+                                    <input type="text"  maxlength="10"  minlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value=""  required/>
                                 </div>
 
                                 <div class="form-group">
-                                    <select class="form-control" name="user-gender">
+                                    <select class="form-control" name="user-gender" required>
                                         <option class="hidden"  selected disabled>Please select your Gender</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
@@ -159,8 +172,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="user-password" placeholder="Password *" value="" required />
+
+                                    <span class="form-control">
+                                        Password must contain at least 1 number, 1 uppercase, 1 lowercase and should be at least 7 characters long.
+                                    </span>
+                                    <input type="password" id="password" class="form-control" name="user-password" placeholder="Password *" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}" required />
+                                    <input type="checkbox" onclick="visibilty()">Show Password
                                 </div>
+
 
                                 <input type="submit" class="btnRegister" name=""  value="Register"/>
                             </form>
@@ -173,7 +192,5 @@
     </div>
 
 </div>
-
-
 </body>
 </html>
