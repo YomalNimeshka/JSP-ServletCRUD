@@ -17,7 +17,7 @@ public class updatedAccountServlet extends HttpServlet {
         accountModel model = new accountModel();
 
         String username = request.getParameter("user-name");
-        int mobileNumber = Integer.parseInt(request.getParameter("mobile-number"));
+        String mobileNumber = request.getParameter("mobile-number");
         String gender = request.getParameter("user-gender");
 
         model.setUserName(username);

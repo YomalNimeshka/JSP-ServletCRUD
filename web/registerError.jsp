@@ -13,7 +13,7 @@
 <body>
 <script>
     alert("Registration Failed. Please make sure that mobile number is all entered in numbers")
-    location.replace("http://localhost:8080/view/register.jsp")
+    location.replace("http://localhost:8080/register.jsp")
 </script>
 </body>
 </html>

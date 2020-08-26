@@ -2,20 +2,20 @@ package com.model;
 
 public class accountModel {
     private String userName;
-    private int mobileNumber;
+    private String mobileNumber;
     private String gender;
     private String password;
 
     public accountModel() {
     }
 
-    public accountModel(String userName, int mobileNumber, String gender) {
+    public accountModel(String userName, String mobileNumber, String gender) {
         this.userName = userName;
         this.mobileNumber = mobileNumber;
         this.gender = gender;
     }
 
-    public accountModel(String userName, int mobileNumber, String gender, String password) {
+    public accountModel(String userName, String mobileNumber, String gender, String password) {
         this.userName = userName;
         this.mobileNumber = mobileNumber;
         this.gender = gender;
@@ -30,11 +30,11 @@ public class accountModel {
         this.userName = userName;
     }
 
-    public int getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(int mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 

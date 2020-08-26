@@ -162,8 +162,9 @@
                                     <input type="text" class="form-control" name="user-name" placeholder=" Name *" value="" required/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text"  maxlength="10"  minlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value=""  required/>
+                                    <input type="text"  maxlength="10" minlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value="" pattern="[0-9]+" required/>
                                 </div>
+
 
                                 <div class="form-group">
                                     <select class="form-control" name="user-gender" id="genderSelection" required >

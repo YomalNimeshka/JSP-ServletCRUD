@@ -146,12 +146,20 @@
 
 </head>
 <body>
+<%--this is to make sure that once logged out there is no backtracking from the browser--%>
 <%
-    String accountName=(String)session.getAttribute("accountName");
-
-    //redirect user to login page if not logged in
-    if(accountName==null){
-        response.sendRedirect("http://localhost:8080/");
+    try {
+        response.setHeader("Cache-Control","no-cache");
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragma","no-cache");
+        response.setDateHeader ("Expires", 0);
+        if (session.getAttribute("accountName")==null) {
+            response.sendRedirect("login.jsp");
+        }
+        else {}
+    }
+    catch(Exception ex) {
+        out.println(ex);
     }
 %>
 
@@ -200,82 +208,6 @@
 
     </div>
 
-   <%-- &lt;%&ndash;add new account dashboard&ndash;%&gt;
-    <div id="addnewAcc" class="modal fade">
-        <div class="container register">
-            <div class="row">
-                <div class="col-md-3 register-left">
-
-                </div>
-                <div class="col-md-9 register-right">
-
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading">Add a new Account</h3>
-                            <div class="row register-form">
-                                <div class="col-md-6">
-                                    <form action="addNewAccountServlet" method="post">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" name="user-name" placeholder=" Name *" value="" required/>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text"  maxlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value=""  required/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <select class="form-control" name="user-gender">
-                                                <option class="hidden"  selected disabled>Please select your Gender</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" name="user-password" placeholder="Password *" value="" required />
-                                        </div>
-
-                                        <input type="submit" class="btnRegister" name="add-user"  value="Register"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    &lt;%&ndash;logout option in the dashboard&ndash;%&gt;
-    <div id="logout" class="modal fade">
-        <div class="container register">
-            <div class="row">
-                <div class="col-md-3 register-left">
-
-                </div>
-                <div class="col-md-9 register-right">
-
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading">Log out from the Account ?</h3>
-                            <div class="row register-form">
-                                <div class="col-md-6">
-                                    <form action="logoutServlet" method="post">
-                                        <input type="submit" class="btnRegister" name="add-user"  value="Log Out"/>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>--%>
 </main>
 
 

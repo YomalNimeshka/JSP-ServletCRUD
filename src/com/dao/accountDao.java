@@ -27,7 +27,7 @@ public class accountDao {
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, model.getUserName());
-            preparedStatement.setInt(2, model.getMobileNumber());
+            preparedStatement.setString(2, model.getMobileNumber());
             preparedStatement.setString(3, model.getGender());
             preparedStatement.setString(4, hashedPassword);
             preparedStatement.executeUpdate();
@@ -83,7 +83,7 @@ public class accountDao {
 
             while (resultSet.next()){
                 String username = resultSet.getString("user_name");
-                int mobileNumber = (resultSet.getInt("mobile_number"));
+                String mobileNumber = (resultSet.getString("mobile_number"));
                 String gender = resultSet.getString("gender");
                 listOfAcc.add(new accountModel(username,mobileNumber,gender));
             }
@@ -106,7 +106,7 @@ public class accountDao {
 
             while (resultSet.next()){
                 String username = resultSet.getString("user_name");
-                int mobileNumber = resultSet.getInt("mobile_number");
+                String mobileNumber = resultSet.getString("mobile_number");
                 String gender = resultSet.getString("gender");
                 String password = resultSet.getString("password");
                 model = new accountModel(username,mobileNumber,gender, password);
@@ -124,7 +124,7 @@ public class accountDao {
         try {
             connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, model.getMobileNumber());
+            preparedStatement.setString(1, model.getMobileNumber());
             preparedStatement.setString(2, model.getGender());
             preparedStatement.setString(3, model.getUserName());
             preparedStatement.executeUpdate();
@@ -142,7 +142,7 @@ public class accountDao {
         try {
             connection = dbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, model.getMobileNumber());
+            preparedStatement.setString(1, model.getMobileNumber());
             preparedStatement.setString(2, model.getUserName());
             preparedStatement.executeUpdate();
             System.out.println("Data has been updated ");

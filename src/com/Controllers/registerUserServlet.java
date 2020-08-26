@@ -15,8 +15,8 @@ import java.util.regex.Pattern;
 
 //@WebServlet("registerUserServlet")
 public class registerUserServlet extends HttpServlet {
-    public Boolean intValidation(boolean checker,HttpServletRequest request){
-        Pattern pattern = Pattern.compile(".*[^0-9].*");
+/*    public Boolean intValidation(boolean checker,HttpServletRequest request){
+        Pattern pattern = Pattern.compile("[^0-9]");
 
         if (request.getParameter("mobile-number") == null){
             return false;
@@ -25,23 +25,22 @@ public class registerUserServlet extends HttpServlet {
         }else {
             return true;
         }
-    }
+    }*/
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        accountModel model = new accountModel();
+//        accountModel model = new accountModel();
 
-        if (intValidation(true, request)){
+/*        if (intValidation(true, request)){*/
 
             String userName = request.getParameter("user-name");
-            int mobileNumber = Integer.parseInt((request.getParameter("mobile-number")));
+            String mobileNumber = request.getParameter("mobile-number");
             String gender = request.getParameter("user-gender");
             String password = request.getParameter("user-password");
 
-            model.setUserName(userName);
-            model.setMobileNumber(mobileNumber);
-            model.setGender(gender);
-            model.setPassword(password);
+
+//    int i = Integer.parseInt(mobileNumber
+        accountModel model = new accountModel( userName, mobileNumber ,  gender,  password);
 
             accountDao dao = new accountDao();
             try {
@@ -54,11 +53,11 @@ public class registerUserServlet extends HttpServlet {
 
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request,response);
-        }else{
+/*        }else{
             //user cannot register
             RequestDispatcher rd = request.getRequestDispatcher("registerError.jsp");
             rd.include(request,response);
-        }
+        }*/
 
 
     }
