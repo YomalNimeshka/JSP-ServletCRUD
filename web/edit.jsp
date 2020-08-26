@@ -133,7 +133,7 @@
                                     <input type="text" class="form-control" name="user-name" placeholder=" " value="<c:out value="${account.userName}"/>" readonly/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text"  maxlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value="<c:out value="${account.mobileNumber}"/>"  required/>
+                                    <input type="text" minlength="10"  maxlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value="<c:out value="${account.mobileNumber}"/>"  required/>
                                 </div>
 
                                 <div class="form-group">
@@ -143,11 +143,6 @@
                                         <option value="female">Female</option>
                                     </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="password" class="form-control" name="user-password" placeholder="" value="<c:out value="${account.password}"/>" readonly />
-                                </div>
-
                                 <input type="submit" class="btnRegister" name=""  value="Edit"/>
                             </form>
                         </div>

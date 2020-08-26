@@ -154,7 +154,7 @@
         response.setHeader("Pragma","no-cache");
         response.setDateHeader ("Expires", 0);
         if (session.getAttribute("accountName")==null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("http://localhost:8080/");
         }
         else {}
     }

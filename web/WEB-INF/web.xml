@@ -17,10 +17,6 @@
         <servlet-class>com.Controllers.dashboardServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>addNewAccountServlet</servlet-name>
-        <servlet-class>com.Controllers.addNewAccountServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>editAccountServlet</servlet-name>
         <servlet-class>com.Controllers.editAccountServlet</servlet-class>
     </servlet>
@@ -54,10 +50,6 @@
     <servlet-mapping>
         <servlet-name>dashboardServlet</servlet-name>
         <url-pattern>/dashboardServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>addNewAccountServlet</servlet-name>
-        <url-pattern>/addNewAccountServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>editAccountServlet</servlet-name>
