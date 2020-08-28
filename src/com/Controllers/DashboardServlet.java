@@ -25,10 +25,10 @@ public class DashboardServlet extends HttpServlet {
         if (session!=null){
 
             String accountName = (String)session.getAttribute("accountName");
-            System.out.println(accountName);
+            //System.out.println(accountName);
 
             String sortButton= request.getParameter("sortButton");
-            System.out.println(sortButton);
+//            System.out.println(sortButton);
             String spageid=request.getParameter("pageid");
             int pageid=Integer.parseInt(spageid);
 
@@ -43,7 +43,7 @@ public class DashboardServlet extends HttpServlet {
                     int noOfRecords = dao.NoOfRecords();
                     int noOfPages = (int)Math.ceil(noOfRecords*1.0/total);
 
-                    List<AccountModel> listOfAcc = dao.pagination(pageid,total,sortId);
+                    List<AccountModel> listOfAcc = dao.pagination(pageid,total,sortId,accountName);
                     request.setAttribute("listOfAcc",listOfAcc);
                     request.setAttribute("noOfPages", noOfPages);
                     request.setAttribute("currentPage", pageid);
@@ -60,7 +60,7 @@ public class DashboardServlet extends HttpServlet {
                     int noOfRecords = dao.NoOfRecords();
                     int noOfPages = (int)Math.ceil(noOfRecords*1.0/total);
 
-                    List<AccountModel> listOfAcc = dao.pagination(pageid,total, userNameSort);
+                    List<AccountModel> listOfAcc = dao.pagination(pageid,total, userNameSort,accountName);
                     request.setAttribute("listOfAcc",listOfAcc);
                     request.setAttribute("noOfPages", noOfPages);
                     request.setAttribute("currentPage", pageid);

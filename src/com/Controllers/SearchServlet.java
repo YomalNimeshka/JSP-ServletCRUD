@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -22,10 +23,17 @@ public class SearchServlet extends HttpServlet {
         AccountDao dao = new AccountDao();
         AccountModel model = new AccountModel();
         String username = request.getParameter("search-bar");
-        List<AccountModel> listOfAcc = dao.searchOption(username);
-        request.setAttribute("listOfAcc",listOfAcc);
-        RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
-        rd.forward(request,response);
+        HttpSession session = request.getSession(false);
+        String accountName = (String)session.getAttribute("accountName");
+        if (username.equals(accountName)){
+            RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
+            rd.forward(request,response);
+        }else{
+            List<AccountModel> listOfAcc = dao.searchOption(username, accountName);
+            request.setAttribute("listOfAcc",listOfAcc);
+            RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
+            rd.forward(request,response);
+        }
 
         //response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
 

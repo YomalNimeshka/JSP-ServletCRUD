@@ -174,24 +174,21 @@ public class AccountDao {
         }
     }
 
-    public List<AccountModel> pagination(int start, int total, String usernameSort){
-        String sql = "select  * from onlineaccount order by "+usernameSort+ " desc limit "+(start-1)+", "+total;
+    public List<AccountModel> pagination(int start, int total, String usernameSort, String accountName){
+        String sql = "select  * from onlineaccount where user_name != '"+accountName+"' order by "+usernameSort+ " desc limit "+(start-1)+", "+total;
         List<AccountModel> accounts = new ArrayList<AccountModel>();
-
+        System.out.println(sql);
 
         try {
             connection = DbConnection.getConnection();
-            Statement preparedStatement = connection.createStatement();
-            ResultSet resultSet = preparedStatement.executeQuery(sql);
-
-            while (resultSet.next()){
-                String username = resultSet.getString("user_name");
-                String mobileNumber =(resultSet.getString("mobile_number"));
-                String gender =(resultSet.getString("gender"));
-                accounts.add(new AccountModel(username,mobileNumber,gender));
+            PreparedStatement Statement = connection.prepareStatement(sql);
+            ResultSet resultSet = Statement.executeQuery();
+                while (resultSet.next() ){
+                    String username = resultSet.getString("user_name");
+                    String mobileNumber =(resultSet.getString("mobile_number"));
+                    String gender =(resultSet.getString("gender"));
+                    accounts.add(new AccountModel(username,mobileNumber,gender));
                 }
-
-
             connection.close();
             System.out.println(usernameSort);
 
@@ -215,8 +212,8 @@ public class AccountDao {
         return noOfRecords;
     }
 
-    public List<AccountModel> searchOption(String search){
-         String sql = "select * from onlineaccount where user_name = ? or mobile_number = ?";
+    public List<AccountModel> searchOption(String search, String accountName){
+         String sql = "select * from onlineaccount where user_name = ? or mobile_number = ? ";
          List<AccountModel> searchedValues = new ArrayList<>();
          AccountModel model = new AccountModel();
 
