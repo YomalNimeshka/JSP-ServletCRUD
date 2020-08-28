@@ -1,36 +1,37 @@
 package com.Controllers;
 
-import com.dao.accountDao;
-import com.model.accountModel;
+import com.dao.AccountDao;
+import com.model.AccountModel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 //@WebServlet(name = "deleteAccountServlet")
-public class deleteAccountServlet extends HttpServlet {
+public class DeleteAccountServlet extends HttpServlet {
+    public String currentAccountUserName;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        accountModel model =new accountModel();
-        accountDao dao = new accountDao();
+        AccountModel model =new AccountModel();
+        AccountDao dao = new AccountDao();
 
-        String username = request.getParameter("userName");
+        currentAccountUserName = request.getParameter("userName");
 
-        model.setUserName(username);
+        model.setUserName(currentAccountUserName);
 
-        accountModel account = dao.editAccountDetails(model);
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");
+        AccountModel account = dao.editAccountDetails(model);
         request.setAttribute("account", account);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");
         requestDispatcher.forward(request,response);
         dao.deleteAccount(model);
-        //response.sendRedirect(request.getContextPath()+"/dashboardServlet");
+
+
+        /*response.sendRedirect(request.getContextPath()+"/dashboardServlet?pageid=1");*/
     }
 }

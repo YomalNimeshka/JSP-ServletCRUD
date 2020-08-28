@@ -1,21 +1,26 @@
 package com.model;
 
-public class accountModel {
+public class AccountModel {
     private String userName;
     private String mobileNumber;
     private String gender;
     private String password;
 
-    public accountModel() {
+    public AccountModel() {
     }
 
-    public accountModel(String userName, String mobileNumber, String gender) {
+    public AccountModel(String userName, String mobileNumber) {
+        this.userName = userName;
+        this.mobileNumber = mobileNumber;
+    }
+
+    public AccountModel(String userName, String mobileNumber, String gender) {
         this.userName = userName;
         this.mobileNumber = mobileNumber;
         this.gender = gender;
     }
 
-    public accountModel(String userName, String mobileNumber, String gender, String password) {
+    public AccountModel(String userName, String mobileNumber, String gender, String password) {
         this.userName = userName;
         this.mobileNumber = mobileNumber;
         this.gender = gender;

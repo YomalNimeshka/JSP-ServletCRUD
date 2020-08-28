@@ -6,35 +6,39 @@
     
     <servlet>
         <servlet-name>registerUserServlet</servlet-name>
-        <servlet-class>com.Controllers.registerUserServlet</servlet-class>
+        <servlet-class>com.Controllers.RegisterUserServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>loginServlet</servlet-name>
-        <servlet-class>com.Controllers.loginServlet</servlet-class>
+        <servlet-class>com.Controllers.LoginServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>dashboardServlet</servlet-name>
-        <servlet-class>com.Controllers.dashboardServlet</servlet-class>
+        <servlet-class>com.Controllers.DashboardServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>editAccountServlet</servlet-name>
-        <servlet-class>com.Controllers.editAccountServlet</servlet-class>
+        <servlet-class>com.Controllers.EditAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>updatedAccountServlet</servlet-name>
-        <servlet-class>com.Controllers.updatedAccountServlet</servlet-class>
+        <servlet-class>com.Controllers.UpdatedAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deleteAccountServlet</servlet-name>
-        <servlet-class>com.Controllers.deleteAccountServlet</servlet-class>
+        <servlet-class>com.Controllers.DeleteAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>deletedAccountServlet</servlet-name>
-        <servlet-class>com.Controllers.deletedAccountServlet</servlet-class>
+        <servlet-class>com.Controllers.DeletedAccountServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>logoutServlet</servlet-name>
-        <servlet-class>com.Controllers.logoutServlet</servlet-class>
+        <servlet-class>com.Controllers.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>searchServlet</servlet-name>
+        <servlet-class>com.Controllers.SearchServlet</servlet-class>
     </servlet>
 
 
@@ -70,6 +74,10 @@
     <servlet-mapping>
         <servlet-name>logoutServlet</servlet-name>
         <url-pattern>/logoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchServlet</servlet-name>
+        <url-pattern>/searchServlet</url-pattern>
     </servlet-mapping>
 
 

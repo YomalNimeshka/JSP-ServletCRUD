@@ -1,25 +1,47 @@
 package com.dao;
 
-import com.db.dbConnection;
-import com.model.accountModel;
-import com.util.hashingFunction;
+import com.db.DbConnection;
+import com.model.AccountModel;
+import com.util.HashingFunction;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class accountDao {
+public class AccountDao {
     static Connection connection;
     static int isLoggedIn;
+     int noOfRecords;
 
-    public void registerUser(accountModel model) throws SQLException, ClassNotFoundException {
+     public int checkUsernameAvailabilty(AccountModel model){
+         String sqlToCheckAvailabilty = "select count(*) from onlineaccount where user_name = ?";
+         int n =0;
+         try {
+             connection = DbConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sqlToCheckAvailabilty);
+             preparedStatement.setString(1, model.getUserName());
+             ResultSet resultSet = preparedStatement.executeQuery();
+
+             if (resultSet.next()){
+                 n =resultSet.getInt(1);
+                 return n;
+             }
+
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+         return n;
+
+     }
+
+
+    public void registerUser(AccountModel model) throws SQLException, ClassNotFoundException {
         String sql = "insert into onlineaccount (user_name, mobile_number, gender, password) values (?, ?, ?, ?)";
+
+
         try {
-            connection = dbConnection.getConnection();
-            hashingFunction hashPassword = new hashingFunction();
+            connection = DbConnection.getConnection();
+            HashingFunction hashPassword = new HashingFunction();
 
             //hashing the password
             String userPasssword = model.getPassword();
@@ -39,12 +61,12 @@ public class accountDao {
         }
     }
 
-    public int loginUser(accountModel model)throws SQLException, ClassNotFoundException{
+    public int loginUser(AccountModel model)throws SQLException, ClassNotFoundException{
         String sql = "select * from onlineaccount where user_name = ? and password = ?";
         try{
 
-            connection = dbConnection.getConnection();
-            hashingFunction hashPassword = new hashingFunction();
+            connection = DbConnection.getConnection();
+            HashingFunction hashPassword = new HashingFunction();
 
             //hashing the password
             String userPassword = model.getPassword();
@@ -71,13 +93,13 @@ public class accountDao {
         return isLoggedIn;
     }
 
-    public List<accountModel> displayTable() throws  SQLException, ClassNotFoundException{
-        List<accountModel> listOfAcc = new ArrayList<>();
+    public List<AccountModel> displayTable() throws  SQLException, ClassNotFoundException{
+        List<AccountModel> listOfAcc = new ArrayList<>();
         String sql = "select * from onlineaccount";
 
 
         try{
-            connection = dbConnection.getConnection();
+            connection = DbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -85,7 +107,7 @@ public class accountDao {
                 String username = resultSet.getString("user_name");
                 String mobileNumber = (resultSet.getString("mobile_number"));
                 String gender = resultSet.getString("gender");
-                listOfAcc.add(new accountModel(username,mobileNumber,gender));
+                listOfAcc.add(new AccountModel(username,mobileNumber,gender));
             }
             connection.close();
         }catch (Exception e){
@@ -95,11 +117,11 @@ public class accountDao {
         return listOfAcc;
     }
 
-    public accountModel editAccountDetails(accountModel model){
+    public AccountModel editAccountDetails(AccountModel model){
         String sql = "select * from onlineaccount where user_name = ?";
 
         try {
-            connection = dbConnection.getConnection();
+            connection = DbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, model.getUserName());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -109,7 +131,7 @@ public class accountDao {
                 String mobileNumber = resultSet.getString("mobile_number");
                 String gender = resultSet.getString("gender");
                 String password = resultSet.getString("password");
-                model = new accountModel(username,mobileNumber,gender, password);
+                model = new AccountModel(username,mobileNumber,gender, password);
             }
             connection.close();
         }catch (Exception e){
@@ -118,11 +140,11 @@ public class accountDao {
         return model;
     }
 
-    public void updateAccount(accountModel model){
+    public void updateAccount(AccountModel model){
         String sql = "update onlineaccount set mobile_number = ?, gender = ? where user_name = ?";
 
         try {
-            connection = dbConnection.getConnection();
+            connection = DbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, model.getMobileNumber());
             preparedStatement.setString(2, model.getGender());
@@ -136,44 +158,11 @@ public class accountDao {
         }
     }
 
-    public void updateAccountWithMN(accountModel model){
-        String sql ="update onlineaccount set mobile_number = ? where user_name = ?";
 
-        try {
-            connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, model.getMobileNumber());
-            preparedStatement.setString(2, model.getUserName());
-            preparedStatement.executeUpdate();
-            System.out.println("Data has been updated ");
-            connection.close();
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println("data could not be updated");
-        }
-    }
-
-    public void updateAccountWithGender(accountModel model){
-        String sql = "update onlineaccount set  gender = ? where user_name = ?";
-
-        try {
-            connection = dbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, model.getGender());
-            preparedStatement.setString(2, model.getUserName());
-            preparedStatement.executeUpdate();
-            System.out.println("Data has been updated ");
-            connection.close();
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println("data could not be updated");
-        }
-    }
-
-    public void deleteAccount(accountModel model){
+    public void deleteAccount(AccountModel model){
         String sql = "delete from onlineaccount where user_name =?";
         try {
-            connection = dbConnection.getConnection();
+            connection = DbConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, model.getUserName());
             preparedStatement.executeUpdate();
@@ -183,5 +172,72 @@ public class accountDao {
             e.printStackTrace();
             System.out.println("could not be deleted");
         }
+    }
+
+    public List<AccountModel> pagination(int start, int total, String usernameSort){
+        String sql = "select  * from onlineaccount order by "+usernameSort+ " desc limit "+(start-1)+", "+total;
+        List<AccountModel> accounts = new ArrayList<AccountModel>();
+
+
+        try {
+            connection = DbConnection.getConnection();
+            Statement preparedStatement = connection.createStatement();
+            ResultSet resultSet = preparedStatement.executeQuery(sql);
+
+            while (resultSet.next()){
+                String username = resultSet.getString("user_name");
+                String mobileNumber =(resultSet.getString("mobile_number"));
+                String gender =(resultSet.getString("gender"));
+                accounts.add(new AccountModel(username,mobileNumber,gender));
+                }
+
+
+            connection.close();
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return accounts;
+    }
+
+    public int NoOfRecords(){
+        try {
+            connection= DbConnection.getConnection();
+            Statement preparedStatement = connection.createStatement();
+            ResultSet resultSet = preparedStatement.executeQuery("select count(*) from onlineaccount");
+            if (resultSet.next()){
+                this.noOfRecords = resultSet.getInt(1);
+                System.out.println(noOfRecords);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return noOfRecords;
+    }
+
+    public List<AccountModel> searchOption(String search){
+         String sql = "select * from onlineaccount where user_name = ? or mobile_number = ?";
+         List<AccountModel> searchedValues = new ArrayList<>();
+         AccountModel model = new AccountModel();
+
+        try {
+            connection= DbConnection.getConnection();
+            //Statement Statement = connection.createStatement();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, search);
+            preparedStatement.setString(2, search);
+            //ResultSet resultSet = Statement.executeQuery(sql);
+            ResultSet resultSet1 = preparedStatement.executeQuery();
+            while (resultSet1.next()){
+                String username = resultSet1.getString("user_name");
+                String mobileNumber =(resultSet1.getString("mobile_number"));
+                String gender =(resultSet1.getString("gender"));
+                searchedValues.add(new AccountModel(username,mobileNumber,gender));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return searchedValues;
     }
 }

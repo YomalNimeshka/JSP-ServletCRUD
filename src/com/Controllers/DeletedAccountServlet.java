@@ -1,27 +1,23 @@
 package com.Controllers;
 
-import javax.servlet.RequestDispatcher;
+import com.dao.AccountDao;
+import com.model.AccountModel;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-//@WebServlet(name = "logoutServlet")
-public class logoutServlet extends HttpServlet {
+//@WebServlet(name = "deletedAccountServlet")
+public class DeletedAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.invalidate();
 
-        response.sendRedirect(request.getContextPath()+"http://localhost:8080/");
-/*        RequestDispatcher rd = request.getRequestDispatcher("view/login.jsp");
-        rd.forward(request,response);*/
     }
 }

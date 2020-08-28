@@ -3,7 +3,7 @@ package com.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class dbConnection {
+public class DbConnection {
     static String url = "jdbc:mysql://localhost:3307/servletcrud";
     static String user= "root";
     static String password = "";

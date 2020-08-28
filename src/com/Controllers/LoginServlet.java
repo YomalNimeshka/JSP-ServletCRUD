@@ -1,11 +1,10 @@
 package com.Controllers;
 
-import com.dao.accountDao;
-import com.model.accountModel;
+import com.dao.AccountDao;
+import com.model.AccountModel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +13,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 //@WebServlet("loginServlet")
-public class loginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        accountModel model = new accountModel();
+        AccountModel model = new AccountModel();
 
         String userName = request.getParameter("user-name");
         String password = request.getParameter("user-password");
@@ -24,15 +23,16 @@ public class loginServlet extends HttpServlet {
         model.setUserName(userName);
         model.setPassword(password);
 
-        accountDao dao = new accountDao();
+        AccountDao dao = new AccountDao();
         try {
             int isConnected = dao.loginUser(model);
 
             if (isConnected==1){
                 //user is been logged in
                 HttpSession session = request.getSession(true);
+
                 session.setAttribute("accountName", userName);
-                response.sendRedirect(request.getContextPath()+ "/dashboardServlet");
+                response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
                 /*RequestDispatcher rd = request.getRequestDispatcher("/dashboard.jsp");
                 rd.forward(request,response);*/
 

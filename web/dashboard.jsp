@@ -171,16 +171,29 @@
         </div>
         <div class="card">
 
+            <form action="logoutServlet" method="get">
+                <input type="submit" class="btn btn-danger" name="add-user"  id="logout_acc" value="Log Out"/>
+            </form>
 
-    <form action="logoutServlet" method="get">
-        <input type="submit" class="btn btn-danger" name="add-user"  id="logout_acc" value="Log Out"/>
-    </form>
+
+
+
+            <!--Search bar -->
+            <form action="searchServlet" method="get">
+                <input type="text" name="search-bar" placeholder="Search a account"/>
+                <input type="submit" value="Search"/>
+            </form>
+
 
 
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Name</th>
+                    <th scope="col">Name
+                        <form action="/dashboardServlet?pageid=1" method="get">
+                           <button> <a href="dashboardServlet/pageid=1"></a></button>
+                        </form>
+                    </th>
                     <th scope="col">Mobile Number</th>
                     <th scope="col">Gender</th>
                     <th scope="col">Edit List </th>
@@ -188,24 +201,61 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 <c:forEach var="listOfAcc" items="${listOfAcc}">
 
-                    <tr>
-                        <td scope="row"><c:out value="${listOfAcc.userName}"/></td>
-                        <td><c:out value="${listOfAcc.mobileNumber}"/></td>
-                        <td><c:out value="${listOfAcc.gender}"/></td>
-                        <td>
-                            <a class="btn btn-sm btn-primary" href="editAccountServlet?userName=<c:out value="${listOfAcc.userName}"/>"><i class="far fa-edit"></i> edit</a>
-                            <a class="btn btn-sm btn-danger" href="deleteAccountServlet?userName=<c:out value="${listOfAcc.userName}"/>"><i class="fas fa-trash-alt"></i> delete</a>
-                        </td>
+                        <tr>
+                            <td scope="row"><c:out value="${listOfAcc.userName}"/></td>
+                            <td><c:out value="${listOfAcc.mobileNumber}"/></td>
+                            <td><c:out value="${listOfAcc.gender}"/></td>
+                            <td>
+                                <a class="btn btn-sm btn-primary" href="editAccountServlet?userName=<c:out value="${listOfAcc.userName}"/>"><i class="far fa-edit"></i> edit</a>
+                                <a class="btn btn-sm btn-danger" href="deleteAccountServlet?userName=<c:out value="${listOfAcc.userName}"/>"><i class="fas fa-trash-alt"></i> delete</a>
+                            </td>
 
-                    </tr>
+                        </tr>
+
+
+
 
                 </c:forEach>
+
+                <tr>
+                    <td colspan="6">
+                        <table cellpadding="1" cellspacing="1">
+                            <tr>
+                                <c:forEach begin="1" end="${noOfPages}" var="i">
+                                    <c:choose>
+                                        <c:when test="${currentPage eq i}">
+                                            <td>${i}</td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <td><a href="dashboardServlet?pageid=${i}">${i}</a> </td>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
                 </tbody>
             </table>
-        </div>
 
+            <%--<a href="dashboardServlet?pageid=1">1</a>
+            <a href="dashboardServlet?pageid=2">2</a>--%>
+
+
+<%--            <c:if test="${currentPage != 1}">
+                <td><a href="dashboardServlet?pageid=${currentPage-1}">Previous</a> </td>
+            </c:if>--%>
+
+
+
+
+<%--            <c:if test="${currentPage lt noOfPages}">
+                <td><a href="dashboardServlet?pageid=${currentPage+1}">Next</a> </td>
+            </c:if>--%>
+        </div>
     </div>
 
 </main>

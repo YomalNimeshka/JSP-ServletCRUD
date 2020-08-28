@@ -146,9 +146,7 @@
                                         <option value="female">Female</option>
                                     </select>
                                 </div>--%>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" name="user-password" placeholder="" value="<c:out value="${account.password}"/>" readonly />
-                                </div>
+
                                 <div>
                                     <p>You will now delete this Account</p>
                                 </div>

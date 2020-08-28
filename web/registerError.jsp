@@ -12,8 +12,8 @@
 </head>
 <body>
 <script>
-    alert("Registration Failed. Please make sure that mobile number is all entered in numbers")
-    location.replace("http://localhost:8080/register.jsp")
+    alert("Registration Failed. UserName already exists.")
+    location.replace("register.jsp")
 </script>
 </body>
 </html>
