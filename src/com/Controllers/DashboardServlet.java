@@ -24,16 +24,15 @@ public class DashboardServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session!=null){
 
-                String accountName = (String)session.getAttribute("accountName");
-                System.out.println(accountName);
+            String accountName = (String)session.getAttribute("accountName");
+            System.out.println(accountName);
 
+            String sortButton= request.getParameter("sortButton");
+            System.out.println(sortButton);
+            String spageid=request.getParameter("pageid");
+            int pageid=Integer.parseInt(spageid);
 
-
-                String sortButton= request.getParameter("sortButton");
-
-                if (sortButton==null){
-                    String spageid=request.getParameter("pageid");
-                    int pageid=Integer.parseInt(spageid);
+            if (sortButton.equals("user_id")){
                     int total=5;
                     String sortId = "user_id";
                     if(pageid==1){}
@@ -48,9 +47,8 @@ public class DashboardServlet extends HttpServlet {
                     request.setAttribute("listOfAcc",listOfAcc);
                     request.setAttribute("noOfPages", noOfPages);
                     request.setAttribute("currentPage", pageid);
+                    request.setAttribute("sortType", sortId);
                 }else{
-                    String spageid=request.getParameter("pageid");
-                    int pageid=Integer.parseInt(spageid);
 
                     int total=5;
                     String userNameSort = "user_name";
@@ -66,6 +64,7 @@ public class DashboardServlet extends HttpServlet {
                     request.setAttribute("listOfAcc",listOfAcc);
                     request.setAttribute("noOfPages", noOfPages);
                     request.setAttribute("currentPage", pageid);
+                    request.setAttribute("sortType", userNameSort);
                 }
 
 

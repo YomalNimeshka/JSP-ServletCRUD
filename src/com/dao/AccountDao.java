@@ -193,7 +193,7 @@ public class AccountDao {
 
 
             connection.close();
-
+            System.out.println(usernameSort);
 
         }catch (Exception e){
             e.printStackTrace();
@@ -208,7 +208,6 @@ public class AccountDao {
             ResultSet resultSet = preparedStatement.executeQuery("select count(*) from onlineaccount");
             if (resultSet.next()){
                 this.noOfRecords = resultSet.getInt(1);
-                System.out.println(noOfRecords);
             }
         }catch (Exception e){
             e.printStackTrace();

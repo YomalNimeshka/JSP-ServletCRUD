@@ -13,7 +13,6 @@ public class DbConnection {
     public static Connection getConnection() {
         try {
             Class.forName(driver);
-            System.out.println("connected");
             connection = DriverManager.getConnection(url,user,password);
             return connection;
         }catch (Exception e){

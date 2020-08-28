@@ -190,9 +190,13 @@
                 <thead>
                 <tr>
                     <th scope="col">Name
-                        <form action="/dashboardServlet?pageid=1" method="get">
-                           <button> <a href="dashboardServlet/pageid=1"></a></button>
+                       <%-- <form action="dashboardServlet?pageid=${i}" method="get" name="">--%>
+
+                    <a href="dashboardServlet?pageid=1&sortButton=user_name" >Sort</a>
+
+<%--
                         </form>
+--%>
                     </th>
                     <th scope="col">Mobile Number</th>
                     <th scope="col">Gender</th>
@@ -228,9 +232,10 @@
                                     <c:choose>
                                         <c:when test="${currentPage eq i}">
                                             <td>${i}</td>
+
                                         </c:when>
                                         <c:otherwise>
-                                            <td><a href="dashboardServlet?pageid=${i}">${i}</a> </td>
+                                            <td><a href="dashboardServlet?pageid=${i}&sortButton=${sortType}">${i}</a> </td>
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>
