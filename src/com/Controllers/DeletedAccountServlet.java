@@ -13,7 +13,7 @@ import java.io.IOException;
 //@WebServlet(name = "deletedAccountServlet")
 public class DeletedAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
+            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
 
     }
 

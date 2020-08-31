@@ -159,7 +159,7 @@
                         <div class="col-md-6">
                             <form action="../registerUserServlet" method="post">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="user-name" placeholder=" Name *" value="" required/>
+                                    <input type="text" class="form-control"  maxlength="15"   name="user-name" placeholder=" Name *" value="" required/>
                                 </div>
                                 <div class="form-group">
                                     <input type="text"  maxlength="10" minlength="10" name="mobile-number" class="form-control" placeholder="Your Phone *" value="" pattern="[0-9]+" required/>

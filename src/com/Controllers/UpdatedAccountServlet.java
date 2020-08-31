@@ -38,7 +38,7 @@ public class UpdatedAccountServlet extends HttpServlet {
 //        dao.updateAccountWithMN(model);
 //        dao.updateAccountWithGender(model);
 
-            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
+            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
         }
 
     }
