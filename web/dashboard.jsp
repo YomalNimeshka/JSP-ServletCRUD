@@ -243,6 +243,9 @@
                         </table>
                     </td>
                 </tr>
+
+                <a href="downloadServlet">Download to PDF</a>
+                <a href="downloadExcelServlet">Download to Excel</a>
                 </tbody>
             </table>
 

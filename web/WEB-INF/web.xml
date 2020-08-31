@@ -40,6 +40,14 @@
         <servlet-name>searchServlet</servlet-name>
         <servlet-class>com.Controllers.SearchServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>downloadServlet</servlet-name>
+        <servlet-class>com.Controllers.DownloadServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>downloadExcelServlet</servlet-name>
+        <servlet-class>com.Controllers.DownloadExcelServlet</servlet-class>
+    </servlet>
 
 
 
@@ -78,6 +86,14 @@
     <servlet-mapping>
         <servlet-name>searchServlet</servlet-name>
         <url-pattern>/searchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>downloadServlet</servlet-name>
+        <url-pattern>/downloadServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>downloadExcelServlet</servlet-name>
+        <url-pattern>/downloadExcelServlet</url-pattern>
     </servlet-mapping>
 
 

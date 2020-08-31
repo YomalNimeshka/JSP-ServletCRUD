@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 
 public class DbConnection {
     static String url = "jdbc:mysql://localhost:3307/servletcrud";
-    static String user= "root";
-    static String password = "";
+    static String user= "yomal";
+    static String password = "12345";
     static String driver ="com.mysql.cj.jdbc.Driver";
     static Connection connection =null;
 

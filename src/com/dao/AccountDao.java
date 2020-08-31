@@ -177,7 +177,6 @@ public class AccountDao {
     public List<AccountModel> pagination(int start, int total, String usernameSort, String accountName){
         String sql = "select  * from onlineaccount where user_name != '"+accountName+"' order by "+usernameSort+ " desc limit "+(start-1)+", "+total;
         List<AccountModel> accounts = new ArrayList<AccountModel>();
-        System.out.println(sql);
 
         try {
             connection = DbConnection.getConnection();
@@ -235,5 +234,33 @@ public class AccountDao {
             e.printStackTrace();
         }
         return searchedValues;
+    }
+
+    public List downloadPDF(){
+         String sql = "select * from onlineaccount";
+         AccountModel objBean;
+         List<AccountModel> dataList = new ArrayList<AccountModel>(0);
+
+
+
+        try {
+            connection= DbConnection.getConnection();
+            //Statement Statement = connection.createStatement();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                objBean = new AccountModel();
+                String userName = (resultSet.getString("user_name"));
+                String mobileNumber = (resultSet.getString("mobile_number"));
+                String gender = (resultSet.getString("gender"));
+
+                dataList.add(new AccountModel(userName, mobileNumber, gender));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+       // System.out.println(dataList);
+        return dataList;
     }
 }
