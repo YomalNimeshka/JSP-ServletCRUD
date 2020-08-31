@@ -189,7 +189,7 @@ public class AccountDao {
                     accounts.add(new AccountModel(username,mobileNumber,gender));
                 }
             connection.close();
-            System.out.println(usernameSort);
+
 
         }catch (Exception e){
             e.printStackTrace();
@@ -205,6 +205,7 @@ public class AccountDao {
             if (resultSet.next()){
                 this.noOfRecords = resultSet.getInt(1);
             }
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -230,6 +231,7 @@ public class AccountDao {
                 String gender =(resultSet1.getString("gender"));
                 searchedValues.add(new AccountModel(username,mobileNumber,gender));
             }
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -240,8 +242,6 @@ public class AccountDao {
          String sql = "select * from onlineaccount";
          AccountModel objBean;
          List<AccountModel> dataList = new ArrayList<AccountModel>(0);
-
-
 
         try {
             connection= DbConnection.getConnection();
@@ -256,7 +256,7 @@ public class AccountDao {
 
                 dataList.add(new AccountModel(userName, mobileNumber, gender));
             }
-
+            connection.close();
         }catch (Exception e){
             e.printStackTrace();
         }

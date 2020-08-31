@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4f081769-01f6-4c1d-a988-d73df70ee889">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<queryString>
 		<![CDATA[select * from onlineaccount;]]>
 	</queryString>
@@ -21,9 +21,9 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="213" y="0" width="196" height="56" uuid="cea6ffa4-0ed6-4620-8e89-4640bfc6987c"/>
+				<reportElement x="197" y="0" width="196" height="56" forecolor="#000000" uuid="cea6ffa4-0ed6-4620-8e89-4640bfc6987c"/>
 				<textElement>
-					<font size="16"/>
+					<font fontName="Dubai" size="24" isBold="false" isItalic="true" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[Online Accounts]]></text>
 			</staticText>
@@ -36,14 +36,23 @@
 		<band height="61" splitType="Stretch">
 			<staticText>
 				<reportElement x="38" y="0" width="100" height="20" uuid="cf778564-9a22-4d8d-9f82-ff67812ba473"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
 				<text><![CDATA[User Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="226" y="0" width="100" height="20" uuid="880d7f6a-a1a8-4a24-af7a-36aaead8a839"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
 				<text><![CDATA[Mobile Number]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="409" y="0" width="60" height="20" uuid="950e3aa6-7e50-4dc3-ac95-80f93c65e1fc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 		</band>
@@ -52,14 +61,23 @@
 		<band height="125" splitType="Stretch">
 			<textField>
 				<reportElement x="38" y="0" width="100" height="20" uuid="032ce979-d85b-4daf-841a-208619918ae2"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="226" y="0" width="100" height="20" uuid="f7d34a8b-226a-47c3-af1a-312992e1792d"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{mobileNumber}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="409" y="0" width="60" height="20" uuid="98ae8427-830b-4297-8fe7-e293933dda61"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
 			</textField>
 		</band>
