@@ -12,7 +12,7 @@
 </head>
 <body>
     <script>
-        alert("Login failed. User name or Password may have been wrong")
+        alert("Login failed. User name or Password may have been wrong.")
         location.replace("http://localhost:8080/")
     </script>
 </body>
