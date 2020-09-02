@@ -24,6 +24,7 @@ public class DashboardServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         if (session!=null){
 
+            //getting the user login name
             String accountName = (String)session.getAttribute("accountName");
 
             String sortButton= request.getParameter("sortButton");

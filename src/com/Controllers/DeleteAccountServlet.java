@@ -29,7 +29,7 @@ public class DeleteAccountServlet extends HttpServlet {
         request.setAttribute("account", account);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");
         requestDispatcher.forward(request,response);
-        dao.deleteAccount(model);
+/*        dao.deleteAccount(model);*/
 
 
         /*response.sendRedirect(request.getContextPath()+"/dashboardServlet?pageid=1");*/

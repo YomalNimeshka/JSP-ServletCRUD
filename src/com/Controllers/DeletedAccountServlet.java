@@ -12,8 +12,16 @@ import java.io.IOException;
 
 //@WebServlet(name = "deletedAccountServlet")
 public class DeletedAccountServlet extends HttpServlet {
+    public String currentAccountUserName;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
+        AccountModel model =new AccountModel();
+        AccountDao dao = new AccountDao();
+        currentAccountUserName = request.getParameter("userName");
+
+        model.setUserName(currentAccountUserName);
+        dao.deleteAccount(model);
+        response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
+
 
     }
 

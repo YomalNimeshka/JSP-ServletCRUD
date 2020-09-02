@@ -25,9 +25,9 @@ public class UpdatedAccountServlet extends HttpServlet {
         boolean mobileMatch = mobilePatternMatcher.matches();
 
         if (mobileNumber==null){
-            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
+            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
         }else if (!mobileMatch==true){
-            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
+            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
         }else{
             model.setUserName(username);
             model.setMobileNumber(mobileNumber);
