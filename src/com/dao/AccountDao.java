@@ -213,7 +213,7 @@ public class AccountDao {
     }
 
     public List<AccountModel> searchOption(String search, String accountName){
-         String sql = "select * from onlineaccount where user_name  like  '"+search+"%' or mobile_number like  '"+search+"%' ";
+         String sql = "select * from onlineaccount where (user_name  like  '"+search+"%' or mobile_number like  '"+search+"%') and user_name != '"+accountName+"'";
          List<AccountModel> searchedValues = new ArrayList<>();
          AccountModel model = new AccountModel();
 

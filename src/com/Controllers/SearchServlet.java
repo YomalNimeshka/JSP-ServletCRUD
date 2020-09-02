@@ -25,14 +25,20 @@ public class SearchServlet extends HttpServlet {
         String username = request.getParameter("search-bar");
         HttpSession session = request.getSession(false);
         String accountName = (String)session.getAttribute("accountName");
-        if (username.equals(accountName)){
-            RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
-            rd.forward(request,response);
-        }else{
-            List<AccountModel> listOfAcc = dao.searchOption(username, accountName);
-            request.setAttribute("listOfAcc",listOfAcc);
-            RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
-            rd.forward(request,response);
+        //checking if the user login and the searched name is the same
+        if (username== ""){
+            response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
+        }else {
+
+            if (username.equals(accountName)) {
+                RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
+                rd.forward(request, response);
+            } else {
+                List<AccountModel> listOfAcc = dao.searchOption(username, accountName);
+                request.setAttribute("listOfAcc", listOfAcc);
+                RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
+                rd.forward(request, response);
+            }
         }
 
         //response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1");
