@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.invalidate();
 
-        response.sendRedirect(request.getContextPath()+"http://localhost:8080/");
+        response.sendRedirect(request.getContextPath()+"login.jsp");
 /*        RequestDispatcher rd = request.getRequestDispatcher("view/login.jsp");
         rd.forward(request,response);*/
     }

@@ -213,7 +213,7 @@ public class AccountDao {
     }
 
     public List<AccountModel> searchOption(String search, String accountName){
-         String sql = "select * from onlineaccount where user_name = ? or mobile_number = ? ";
+         String sql = "select * from onlineaccount where user_name  like  '"+search+"%' or mobile_number like  '"+search+"%' ";
          List<AccountModel> searchedValues = new ArrayList<>();
          AccountModel model = new AccountModel();
 
@@ -221,8 +221,8 @@ public class AccountDao {
             connection= DbConnection.getConnection();
             //Statement Statement = connection.createStatement();
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, search);
-            preparedStatement.setString(2, search);
+          /*  preparedStatement.setString(1, search);
+            preparedStatement.setString(2, search);*/
             //ResultSet resultSet = Statement.executeQuery(sql);
             ResultSet resultSet1 = preparedStatement.executeQuery();
             while (resultSet1.next()){

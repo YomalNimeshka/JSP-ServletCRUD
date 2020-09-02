@@ -25,10 +25,8 @@ public class DashboardServlet extends HttpServlet {
         if (session!=null){
 
             String accountName = (String)session.getAttribute("accountName");
-            //System.out.println(accountName);
 
             String sortButton= request.getParameter("sortButton");
-//            System.out.println(sortButton);
             String spageid=request.getParameter("pageid");
             int pageid=Integer.parseInt(spageid);
 
