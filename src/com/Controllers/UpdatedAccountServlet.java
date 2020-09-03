@@ -24,6 +24,7 @@ public class UpdatedAccountServlet extends HttpServlet {
         Matcher mobilePatternMatcher = numberPattern.matcher(mobileNumber);
         boolean mobileMatch = mobilePatternMatcher.matches();
 
+        //validation for mobilenumber
         if (mobileNumber==null){
             response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
         }else if (!mobileMatch==true){

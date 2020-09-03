@@ -23,8 +23,9 @@ public class EditAccountServlet extends HttpServlet {
 
         String username = request.getParameter("userName");
         model.setUserName(username);
-        System.out.println(username);
+        //System.out.println(username);
 
+        //this to display the details of the username to the edit page
         AccountDao dao = new AccountDao();
         AccountModel accountDetails = dao.editAccountDetails(model);
 

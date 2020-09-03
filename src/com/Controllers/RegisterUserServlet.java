@@ -54,6 +54,7 @@ public class RegisterUserServlet extends HttpServlet {
 
             AccountDao dao = new AccountDao();
             try {
+                //checking if the username that is entered is there in the database
                 int userExist = dao.checkUsernameAvailabilty(model);
                 if (userExist > 0) {
                     System.out.println("User already exist in db");

@@ -30,6 +30,7 @@ public class SearchServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath()+ "/dashboardServlet?pageid=1&sortButton=user_id");
         }else {
 
+            //if the logged in user name is equal to the searched name then dont display that name
             if (username.equals(accountName)) {
                 RequestDispatcher rd = request.getRequestDispatcher("dashboard.jsp");
                 rd.forward(request, response);

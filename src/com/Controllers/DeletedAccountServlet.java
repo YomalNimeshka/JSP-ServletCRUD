@@ -16,6 +16,7 @@ public class DeletedAccountServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         AccountModel model =new AccountModel();
         AccountDao dao = new AccountDao();
+        //getting the current user name.
         currentAccountUserName = request.getParameter("userName");
 
         model.setUserName(currentAccountUserName);

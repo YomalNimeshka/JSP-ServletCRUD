@@ -31,6 +31,7 @@ public class DashboardServlet extends HttpServlet {
             String spageid=request.getParameter("pageid");
             int pageid=Integer.parseInt(spageid);
 
+            //this is to show the records with the newly added account at the top
             if (sortButton.equals("user_id")){
                     int total=5;
                     String sortId = "user_id";
@@ -40,6 +41,7 @@ public class DashboardServlet extends HttpServlet {
                         pageid=pageid*total+1;
                     }
                     int noOfRecords = dao.NoOfRecords();
+                     //this is requrired for pagination
                     int noOfPages = (int)Math.ceil(noOfRecords*1.0/total);
 
                     List<AccountModel> listOfAcc = dao.pagination(pageid,total,sortId,accountName);
@@ -47,7 +49,10 @@ public class DashboardServlet extends HttpServlet {
                     request.setAttribute("noOfPages", noOfPages);
                     request.setAttribute("currentPage", pageid);
                     request.setAttribute("sortType", sortId);
-                }else{
+
+                }
+            //this to display according to the name being sorted on the dashboard
+            else{
 
                     int total=5;
                     String userNameSort = "user_name";
@@ -57,6 +62,7 @@ public class DashboardServlet extends HttpServlet {
                         pageid=pageid*total+1;
                     }
                     int noOfRecords = dao.NoOfRecords();
+                    //this is requrired for pagination
                     int noOfPages = (int)Math.ceil(noOfRecords*1.0/total);
 
                     List<AccountModel> listOfAcc = dao.pagination(pageid,total, userNameSort,accountName);

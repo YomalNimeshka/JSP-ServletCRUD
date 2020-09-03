@@ -25,6 +25,7 @@ public class DeleteAccountServlet extends HttpServlet {
 
         model.setUserName(currentAccountUserName);
 
+        //this to display the account details before deleting the account
         AccountModel account = dao.editAccountDetails(model);
         request.setAttribute("account", account);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("delete.jsp");

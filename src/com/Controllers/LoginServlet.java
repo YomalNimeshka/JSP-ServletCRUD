@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
             int isConnected = dao.loginUser(model);
 
             if (isConnected==1){
-                //user is been logged in
+                //user is been logged in and creating a session
                 HttpSession session = request.getSession(true);
 
                 session.setAttribute("accountName", userName);
